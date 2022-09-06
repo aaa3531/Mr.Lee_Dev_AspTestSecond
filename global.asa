@@ -1,0 +1,23 @@
+﻿
+
+<script language="VBScript" RUNAT="Server">
+ 
+Sub Session_OnEnd
+
+  Set Dbcon = Server.CreateObject("ADODB.Connection")
+  DbCon.Open "dsn=qqq3531;uid=qqq3531;pwd=ehqkr01@;port=1433;"
+
+strSQL = "p_sz_log_out '"& Session("member_no") &"'"
+  'response.Write strSQL  
+  
+
+  ' 페이지 작동되는 방식
+  Set rs = Server.CreateObject("ADODB.RecordSet")
+    rs.Open strSQL, DbCon, 1, 1
+	
+	Set rs=nothing
+    Set Dbcon = nothing
+    Session.Abandon 	
+End sub
+ 
+</script>
